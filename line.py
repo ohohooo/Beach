@@ -63,22 +63,26 @@ userhelp = """😎สวัสดีพี่โอ้เค้ายัง?😎
 ☞╠☠ชื่อ @
 ☞╠☠ไปเกิดใหม่ @
 ☞╠☠ไอดี @
-☞╠☠danyall [text]
-☞╠☠แทค
+☞╠☠ยกค้าง
+☞╠☠ทุกคน
 ☞╠☠sh *
 ☞╠☠โทร
 ☞╠☠เวลา
-☞╠☠remember [1:2]
-☞╠☠forget [1]
-☞╠☠forgetall
+☞╠☠จำ @
+☞╠☠ลืม
+☞╠☠ลืมหมด
 ☞╠☠autodeny off
 ☞╠☠autodeny [numbers]
-☞╠☠autoread on/off
+☞╠☠เปิด/ปิดอ่าน
 ☞╠☠เปิด/ปิดบล็อค
 ☞╠☠เปิด/ปิดข้อความ
+☞╠☠เปิด/ปิดรูป
+☞╠☠เปิด/ปิดแทค
 ☞╠☠ตั้งข้อความ:[ใส่ข้อความ]
 ☞╠☠ตั้งแอด:[ใส่ข้อความ]
+☞╠☠ตั้งแทค:[ใส่ข้อความ]
 ☞╠☠เปิด/ปิดแอด
+☞╠☠!resetallmention
 ☢☢☢☢☢☢☢☢☢☢☢☢☢☢
 **😰แค่นี้แหละกูเหนื่อย😰**"""
 
@@ -195,26 +199,26 @@ def user1scipt(op):
             if msg.text is None:
                return
 
-            elif msg.text.lower() == "!help":
+            elif msg.text.lower() == "คำสั่ง":
                 cl.sendMessage(msg.to,userhelp)
 
-            elif msg.text.lower() == "!myid":
+            elif msg.text.lower() == "ไอดี":
                 cl.sendMessage(msg.to,user1)
 
-            elif msg.text.lower() == "!me":
+            elif msg.text.lower() == "me":
                 beach = user1
                 cl.sendContact(msg.to,beach)
 
-            elif msg.text.lower() == "!myname":
+            elif msg.text.lower() == "ชื่อ":
                 G = cl.getContact(user1)
                 cl.sendMessage(msg.to,G.displayName)
 
-            elif msg.text.lower() == "!speed":
+            elif msg.text.lower() == "sp":
                 start = time.time()
                 cl.sendMessage(msg.to,"กำลังทดสอบ(｀・ω・´)")
                 cl.sendMessage(msg.to,str(int(round((time.time() - start) * 1000)))+" ms")
 
-            elif "!name " in msg.text.lower():
+            elif "ชื่อ " in msg.text.lower():
                 spl = re.split("!name ",msg.text,flags=re.IGNORECASE)
                 if spl[0] == "":
                     prof = cl.getProfile()
@@ -222,7 +226,7 @@ def user1scipt(op):
                     cl.updateProfile(prof)
                     cl.sendMessage(msg.to,"เปลี่ยนชื่อสำเร็จแล้ว(｀・ω・´)")
 
-            elif "!kick" in msg.text.lower():
+            elif "ไปเกิดใหม่" in msg.text.lower():
                 if msg.contentMetadata is not None:
                     targets = []
                     key = eval(msg.contentMetadata["MENTION"])
@@ -237,7 +241,7 @@ def user1scipt(op):
                     else:
                         pass
 
-            elif "!uid " in msg.text.lower():
+            elif "ไอดี " in msg.text.lower():
                 if msg.toType == 2:
                     red = re.compile(re.escape('!uid '),re.IGNORECASE)
                     namel = red.sub('',msg.text)
@@ -251,7 +255,7 @@ def user1scipt(op):
                         if targ.displayName in namel:
                             cl.sendMessage(msg.to,targ.displayName+": "+targ.mid)
 
-            elif "!denyall" in msg.text.lower():
+            elif "ยกค้าง" in msg.text.lower():
                  spl = re.split("!denyall",msg.text,flags=re.IGNORECASE)
                  if spl[0] == "":
                      spl[1] = spl[1].strip()
@@ -272,15 +276,15 @@ def user1scipt(op):
                              pass
                      cl.sendMessage(msg.to,"สำเร็จแล้ว(｀・ω・´)")
 
-            elif "!setmessageadd:" in msg.text.lower():
+            elif "ตั้งแอด:" in msg.text.lower():
                 wait['messageadd'] = msg.text.replace("!setmessageadd:","")
                 cl.sendMessage(msg.to,"ตั้งค่าสำเร็จ(｀・ω・´)")
 
-            elif "!tagmessage:" in msg.text.lower():
+            elif "ตั้งแทค:" in msg.text.lower():
                 wait['tagmessage'] = msg.text.replace("!tagmessage:","")
                 cl.sendMessage(msg.to,"ตั้งค่าสำเร็จ(｀・ω・´)")
 
-            elif msg.text.lower().startswith("!mentionall"):
+            elif msg.text.lower().startswith("แทค"):
                 data = msg.text[len("!mentionall"):].strip()
                 if data == "":
                     group = cl.getGroup(msg.to)
@@ -324,7 +328,7 @@ def user1scipt(op):
                     except:
                        cl.sendMessage(msg.to,"[[NO MENTION]]")
 
-            elif msg.text.lower() == "!checkmention":
+            elif msg.text.lower() == "ทุกคน":
                 if msg.to in mentmedat and mentmedat[msg.to] != []:
                     text = ""
                     for data in mentmedat[msg.to]:
@@ -360,16 +364,16 @@ def user1scipt(op):
                     except:
                         pass
 
-            elif msg.text.lower() == "!invitetocall":
+            elif msg.text.lower() == "โทร":
                 exc = cl.getGroup(msg.to).members
                 zxc = cl.getProfile().mid
                 cl.inviteIntoGroupCall(msg.to,[uid.mid for uid in exc if uid.mid != zxc])
                 cl.sendMessage(msg.to,"เชิญเข้าร่วมการคอลเรียบร้อย(｀・ω・´)")
 
-            elif msg.text.lower() == "!uptime":
+            elif msg.text.lower() == "เวลา":
                 cl.sendMessage(msg.to,str(datetime.now() - start_runtime)[:-7].split(":")[0]+" hour, "+str(datetime.now() - start_runtime)[:-7].split(":")[1]+" minute, "+str(datetime.now() - start_runtime)[:-7].split(":")[2]+" second,")
 
-            elif msg.text.lower().startswith("!remember "):
+            elif msg.text.lower().startswith("จำ "):
                 data = msg.text[len("!remember "):]
                 keyword = data.split(":",1)[0]
                 if keyword.lower().startswith("!remember") or keyword.lower().startswith("!forget") or keyword in ["",None]:
@@ -390,7 +394,7 @@ def user1scipt(op):
                 else:
                     cl.sendMessage(msg._from,"จำแล้ว (｀・ω・´)"+tm)
 
-            elif msg.text.lower().startswith("!forget "):
+            elif msg.text.lower().startswith("ลืม "):
                 keyword = msg.text[len("!forget "):]
                 if keyword in ["",None]:
                     raise ValueError
@@ -415,7 +419,7 @@ def user1scipt(op):
                         cl.sendMessage(msg.to,"ไม่สามารถลืมได้ (｀・ω・´)"+tm)
                     else:
                         cl.sendMessage(msg._from,"ไม่สามารถลืมได้ (｀・ω・´)"+tm)
-            elif msg.text.lower() == "!forgetall":
+            elif msg.text.lower() == "ลืมหมด":
                 dkey = respRemember.pop(msg.to,None)
                 now2 = datetime.now()
                 nowT = datetime.strftime(now2,"%H")
@@ -427,7 +431,7 @@ def user1scipt(op):
                 else:
                     cl.sendMessage(msg.from_,"ลืมทุกอย่างแล้ว (｀・ω・´)"+tm)
 
-            elif "!welcomemessage:" in msg.text.lower():
+            elif "ตั้งข้อความ:" in msg.text.lower():
                  c = msg.text.replace("!welcomemessage:","")
                  if c in [""," ","\n",None]:
                      cl.sendMessage(msg.to,"เกิดข้อผิดพลาด!!(｀・ω・´)")
@@ -446,7 +450,7 @@ def user1scipt(op):
                except:
                    cl.sendMessage(msg.to,"พบข้อผิดพลาด(｀・ω・´)")
 
-            elif msg.text.lower() == "!autoread on":
+            elif msg.text.lower() == "เปิดอ่าน":
                 if wait["alwayread"] == True:
                     cl.sendMessage(msg.to,"เปิดอ่านอัตโนมัติแล้ว(｀・ω・´)")
                     wait["alwayread"] = False
@@ -454,7 +458,7 @@ def user1scipt(op):
                     if wait["alwayread"] == False:
                         cl.sendMessage(msg.to,"เปิดอ่านอัตโนมัติแล้ว(｀・ω・´)")
 
-            elif msg.text.lower() == "!autoread off":
+            elif msg.text.lower() == "ปิดอ่าน":
                 if wait["alwayread"] == False:
                     cl.sendMessage(msg.to,"ปิดอ่านอัตโนมัติแล้ว(｀・ω・´)")
                     wait["alwayread"] = True
@@ -462,7 +466,7 @@ def user1scipt(op):
                     if wait["alwayread"] == True:
                         cl.sendMessage(msg.to,"ปิดอ่านอัตโนมัติแล้ว(｀・ω・´)")
 
-            elif msg.text.lower() == "!autoblock on":
+            elif msg.text.lower() == "เปิดบล็อค":
                 if wait['autoBlock'] == True:
                     cl.sendMessage(msg.to,"เปิดการบล็อคอัตโนมัตื(｀・ω・´)")
                     wait['autoBlock'] = False
@@ -470,7 +474,7 @@ def user1scipt(op):
                     if wait['autoBlock'] == False:
                         cl.sendMessage(msg.to,"เปิดการบล็อคอัตโนมัตื(｀・ω・´)")
 
-            elif msg.text.lower() == "!autoblock off":
+            elif msg.text.lower() == "ปิดบล็อค":
                 if wait['autoBlock'] == False:
                     cl.sendMessage(msg.to,"ปิดการบล็อคอัตโนมัตื(｀・ω・´)")
                     wait['autoBlock'] = True
@@ -478,7 +482,7 @@ def user1scipt(op):
                     if wait['autoBlock'] == True:
                         cl.sendMessage(msg.to,"ปิดการบล็อคอัตโนมัตื(｀・ω・´)")
 
-            elif msg.text.lower() == "!welcomepic on":
+            elif msg.text.lower() == "เปิดรูป":
                 if wait['welcomepic'] == False:
                     cl.sendMessage(msg.to,"เปิดต้อนรับรูปเรียบร้อย(｀・ω・´)")
                     wait['welcomepic'] = True
@@ -486,7 +490,7 @@ def user1scipt(op):
                     if wait['welcomepic'] == True:
                         cl.sendMessage(msg.to,"เปิดต้อนรับรูปเรียบร้อย(｀・ω・´)")
 
-            elif msg.text.lower() == "!welcomepic off":
+            elif msg.text.lower() == "ปิดรูป":
                 if wait['welcomepic'] == True:
                     cl.sendMessage(msg.to,"ปิดต้อนรับรูปเรียบร้อย(｀・ω・´)")
                     wait['welcomepic'] = False
@@ -494,7 +498,7 @@ def user1scipt(op):
                     if wait['welcomepic'] == False:
                         cl.sendMessage(msg.to,"ปิดต้อนรับรูปเรียบร้อย(｀・ω・´)")
 
-            elif msg.text.lower() == "!welcomemessage on":
+            elif msg.text.lower() == "เปิดข้อความ":
                 if wait['welcomemessage'] == False:
                     cl.sendMessage(msg.to,"เปิดต้อนรับข้อความเรียบร้อย(｀・ω・´)")
                     wait['welcomemessage'] = True
@@ -502,7 +506,7 @@ def user1scipt(op):
                     if wait['welcomemessage'] == True:
                         cl.sendMessage(msg.to,"เปิดต้อนรับข้อความเรียบร้อย(｀・ω・´)")
 
-            elif msg.text.lower() == "!welcomemessage off":
+            elif msg.text.lower() == "ปิดข้อความ":
                 if wait['welcomemessage'] == True:
                     cl.sendMessage(msg.to,"ปิดต้อนรับข้อความเรียบร้อย(｀・ω・´)")
                     wait['welcomemessage'] = False
@@ -510,7 +514,7 @@ def user1scipt(op):
                     if wait['welcomemessage'] == False:
                         cl.sendMessage(msg.to,"ปิดต้อนรับข้อความเรียบร้อย(｀・ω・´)")
 
-            elif msg.text.lower() == "!autoadd on":
+            elif msg.text.lower() == "เปิดแอด":
                 if wait['autoadd'] == False:
                     cl.sendMessage(msg.to,"เปิดการรับเพื่อนอัตโนมัติ(｀・ω・´)")
                     wait['autoadd'] = True
@@ -518,7 +522,7 @@ def user1scipt(op):
                     if wait['autoadd'] == True:
                         cl.sendMessage(msg.to,"เปิดการรับเพื่อนอัตโนมัติ(｀・ω・´)")
 
-            elif msg.text.lower() == "!autoadd off":
+            elif msg.text.lower() == "ปิดแอด":
                 if wait['autoadd'] == True:
                     cl.sendMessage(msg.to,"ปิดการรับเพื่อนอัตโนมัติ(｀・ω・´)")
                     wait['auto'] = False
@@ -526,7 +530,7 @@ def user1scipt(op):
                     if wait['autoadd'] == False:
                         cl.sendMessage(msg.text,"ปิดการรับเพื่อนอัตโนมัติ(｀・ω・´)")
 
-            elif msg.text.lower() == "!autotag on":
+            elif msg.text.lower() == "เปิดแทค":
                 if wait['autotag'] == False:
                     cl.sendMessage(msg.to,"เปิดการแท็กตอบกลับเรียบร้อย(｀・ω・´)")
                     wait['autotag'] = True
@@ -534,7 +538,7 @@ def user1scipt(op):
                     if wait['autotag'] == True:
                         cl.sendMessage(msg.to,"เปิดการแท็กตอบกลับเรียบร้อย(｀・ω・´)")
 
-            elif msg.text.lower() == "!autotag off":
+            elif msg.text.lower() == "ปิดแทค":
                 if wait['autotag'] == True:
                     cl.sendMessage(msg.to,"ปิดการแท็กตอบกลับเรียบร้อย(｀・ω・´)")
                     wait['autotag'] = False
