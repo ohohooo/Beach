@@ -290,7 +290,7 @@ def lineBot(op):
                     return
 #==============================================================================#
 
-                 if text.lower() == 'help':
+                if text.lower() == 'help':
                     helpMessage = helpmessage()
                     gye.sendMessage(to, str(helpMessage))
                     gye.sendContact(to, "u104e95aaefb53cf411f77353f6a96ece")
