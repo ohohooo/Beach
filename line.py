@@ -719,3 +719,92 @@ except:
     traceback.print_exc()
     with open('tval.pkl', 'wb') as f:
         pickle.dump([cltoken,wait], f)
+        
+        #-----------------------------------------------------------
+                elif text.lower() == 'เปิดหมด':
+                        settings["protect"] = True
+                        settings["qrprotect"] = True
+                        settings["inviteprotect"] = True
+                        settings["cancelprotect"] = True
+                        settings["join link"] = True
+                        line.sendMessage(msg.to,"Join link on")
+                        line.sendMessage(msg.to,"Qrprotect on")
+                        line.sendMessage(msg.to,"Protect on")
+                        line.sendMessage(msg.to,"Inviteprotect on")
+                        line.sendMessage(msg.to,"Cancelprotect on")
+                        line.sendMessage(msg.to,"➲ All Protect Set To On")
+                        		            
+                elif text.lower() == 'ปิดหมด':
+             #       if msg._from in Owner:
+                        settings["protect"] = False
+                        settings["qrprotect"] = False
+                        settings["inviteprotect"] = False
+                        settings["cancelprotect"] = False
+                        line.sendMessage(msg.to,"Qrprotect Off")
+                        line.sendMessage(msg.to,"Protect Off")
+                        line.sendMessage(msg.to,"Inviteprotect Off")
+                        line.sendMessage(msg.to,"Cancelprotect Off")
+                        line.sendMessage(msg.to,"➲ All Protect Set To Modar")
+            #        else:
+             #           gye.sendMessage(msg.to,"Just for Owner")
+#==============================================================================#                
+                elif msg.text.lower() == 'พวก':
+                        line.sendContact(to, lineMID)
+                        ki1.sendContact(to, ki1MID)
+                        ki2.sendContact(to, ki2MID)
+                        ki3.sendContact(to, ki3MID)
+                        ki4.sendContact(to, ki4MID)
+                        ki5.sendContact(to, ki5MID)
+                        ki6.sendContact(to, ki6MID)
+                        ki7.sendContact(to, ki7MID)
+                        ki8.sendContact(to, ki8MID)
+                        ki9.sendContact(to, ki9MID)
+                        ki10.sendContact(to, ki10MID)
+                elif text.lower() in ["ออก"]:    
+                    #gye.leaveGroup(msg.to)
+                    ki1.leaveGroup(msg.to)
+                    ki2.leaveGroup(msg.to)
+                    ki3.leaveGroup(msg.to)
+                    ki4.leaveGroup(msg.to)
+                    ki5.leaveGroup(msg.to)
+                    ki6.leaveGroup(msg.to)
+                    ki7.leaveGroup(msg.to)
+                    ki8.leaveGroup(msg.to)
+                    ki9.leaveGroup(msg.to)
+                    ki10.leaveGroup(msg.to)                    
+                elif text.lower() in ["พร้อม"]:
+                    line.leaveGroup(msg.to)
+                    ki1.leaveGroup(msg.to)
+                    ki2.leaveGroup(msg.to)
+                    ki3.leaveGroup(msg.to)
+                    ki4.leaveGroup(msg.to)
+                    ki5.leaveGroup(msg.to)
+                    ki6.leaveGroup(msg.to)
+                    ki7.leaveGroup(msg.to)
+                    ki8.leaveGroup(msg.to)
+                    ki9.leaveGroup(msg.to)
+                    ki10.leaveGroup(msg.to)                  
+                elif text.lower() in ["เข้า"]:    
+                    G = line.getGroup(msg.to)
+                    ginfo = line.getGroup(msg.to)
+                    G.preventedJoinByTicket = False
+                    line.updateGroup(G)
+                    invsend = 0
+                    Ticket = line.reissueGroupTicket(msg.to)		
+                    ki1.acceptGroupInvitationByTicket(msg.to,Ticket)
+                    ki2.acceptGroupInvitationByTicket(msg.to,Ticket)
+                    ki3.acceptGroupInvitationByTicket(msg.to,Ticket)
+                    ki4.acceptGroupInvitationByTicket(msg.to,Ticket)
+                    ki5.acceptGroupInvitationByTicket(msg.to,Ticket)
+                    ki6.acceptGroupInvitationByTicket(msg.to,Ticket)		
+                    ki7.acceptGroupInvitationByTicket(msg.to,Ticket)
+                    ki8.acceptGroupInvitationByTicket(msg.to,Ticket)
+                    ki9.acceptGroupInvitationByTicket(msg.to,Ticket)
+                    ki10.acceptGroupInvitationByTicket(msg.to,Ticket)                    	
+                    G = line.getGroup(msg.to)
+                    G.preventedJoinByTicket = True
+                    line.updateGroup(G)
+                    G.preventedJoinByTicket(G)
+                    line.updateGroup(G)
+                       
+#-------------------------------------------------------------------------------
