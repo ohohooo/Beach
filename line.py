@@ -82,7 +82,7 @@ def sendMessageWithMention(to, mid):
     except Exception as error:
         logError(error)
         
-        def helpmessage():
+    def helpmessage():
     helpMessage = "╭════════╬🔛╬════════╮" + "\n" + \
                   "║͜͡☆➣ Ǥﾘ乇 Џんﾑ 乃Ծｲ丂" + "\n" + \
                   "╰════════╬🔛╬════════╯" + "\n" + \
