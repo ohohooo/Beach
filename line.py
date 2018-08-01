@@ -7,6 +7,161 @@ import time, random, sys, json, codecs, threading, glob, re, string, os, request
 from datetime import datetime
 from random import randint
 
+#==============================================================================#
+botStart = time.time()
+
+
+#line = LINE()
+#line = LINE("AuthToken")
+#line = LINE("Email","Password")
+line = LINE()
+line.log("Auth Token : " + str(line.authToken))
+channelToken = line.getChannelResult()
+line.log("Channel Token : " + str(channelToken))
+
+ki1 = LINE()
+ki1.log("Auth Token : " + str(line.authToken))
+channelToken = ki1.getChannelResult()
+ki1.log("Channel Token : " + str(channelToken))
+
+ki2 = LINE()
+ki2.log("Auth Token : " + str(line.authToken))
+channelToken = ki2.getChannelResult()
+ki2.log("Channel Token : " + str(channelToken))
+
+ki3 = LINE()
+ki3.log("Auth Token : " + str(line.authToken))
+channelToken = ki3.getChannelResult()
+ki3.log("Channel Token : " + str(channelToken))
+
+ki4 = LINE()
+ki4.log("Auth Token : " + str(line.authToken))
+channelToken = ki4.getChannelResult()
+ki4.log("Channel Token : " + str(channelToken))
+
+ki5 = LINE()
+ki5.log("Auth Token : " + str(line.authToken))
+channelToken = ki5.getChannelResult()
+ki5.log("Channel Token : " + str(channelToken))
+
+ki6 = LINE()
+ki6.log("Auth Token : " + str(line.authToken))
+channelToken = ki6.getChannelResult()
+ki6.log("Channel Token : " + str(channelToken))
+
+ki7 = LINE()
+ki7.log("Auth Token : " + str(line.authToken))
+channelToken = ki7.getChannelResult()
+ki7.log("Channel Token : " + str(channelToken))
+
+ki8 = LINE()
+ki8.log("Auth Token : " + str(line.authToken))
+channelToken = ki8.getChannelResult()
+ki8.log("Channel Token : " + str(channelToken))
+
+ki9 = LINE()
+ki9.log("Auth Token : " + str(line.authToken))
+channelToken = ki9.getChannelResult()
+ki9.log("Channel Token : " + str(channelToken))
+
+ki10 = LINE()
+ki10.log("Auth Token : " + str(line.authToken))
+channelToken = ki10.getChannelResult()
+ki10.log("Channel Token : " + str(channelToken))
+
+
+print ("Login Succes")
+
+lineMID = line.profile.mid
+lineProfile = line.getProfile()
+lineSettings = line.getSettings()
+
+ki1MID = ki1.profile.mid
+ki1Profile = ki1.getProfile()
+ki1Settings = ki1.getSettings()
+
+ki2MID = ki2.profile.mid
+ki2Profile = ki2.getProfile()
+ki2Settings = ki2.getSettings()
+
+ki3MID = ki3.profile.mid
+ki3Profile = ki3.getProfile()
+ki3Settings = ki3.getSettings()
+
+ki4MID = ki4.profile.mid
+ki4Profile = ki4.getProfile()
+ki4Settings = ki4.getSettings()
+
+ki5MID = ki5.profile.mid
+ki5Profile = ki5.getProfile()
+ki5Settings = ki5.getSettings()
+
+ki6MID = ki6.profile.mid
+ki6Profile = ki6.getProfile()
+ki6Settings = ki6.getSettings()
+
+ki7MID = ki7.profile.mid
+ki7Profile = ki7.getProfile()
+ki7Settings = ki7.getSettings()
+
+ki8MID = ki8.profile.mid
+ki8Profile = ki8.getProfile()
+ki8Settings = ki8.getSettings()
+
+ki9MID = ki9.profile.mid
+ki9Profile = ki9.getProfile()
+ki9Settings = ki9.getSettings()
+
+ki10MID = ki10.profile.mid
+ki10Profile = ki10.getProfile()
+ki10Settings = ki10.getSettings()
+
+
+oepoll = OEPoll(ki10)
+oepoll = OEPoll(ki9)
+oepoll = OEPoll(ki8)
+oepoll = OEPoll(ki7)
+oepoll = OEPoll(ki6)
+oepoll = OEPoll(ki5)
+oepoll = OEPoll(ki4)
+oepoll = OEPoll(ki3)
+oepoll = OEPoll(ki2)
+oepoll = OEPoll(ki1)
+oepoll = OEPoll(line)
+#call = Call(line)
+readOpen = codecs.open("read.json","r","utf-8")
+settingsOpen = codecs.open("temp.json","r","utf-8")
+
+read = json.load(readOpen)
+settings = json.load(settingsOpen)
+Rfu = [line,ki1,ki2,ki3,ki4,ki5,ki6,ki7,ki8,ki9,ki10]
+Exc = [ki1,ki2,ki3,ki4,ki5,ki6,ki7,ki8,ki9,ki10]
+lineMID = line.getProfile().mid
+ki1MID = ki1.getProfile().mid
+ki2MID = ki2.getProfile().mid
+ki3MID = ki3.getProfile().mid
+ki4MID = ki4.getProfile().mid
+ki5MID = ki5.getProfile().mid
+ki6MID = ki6.getProfile().mid
+ki7MID = ki7.getProfile().mid
+ki8MID = ki8.getProfile().mid
+ki9MID = ki9.getProfile().mid
+ki10MID = ki10.getProfile().mid
+bot1 = line.getProfile().mid
+RfuBot=[lineMID,ki1MID,ki2MID,ki3MID,ki4MID,ki5MID,ki6MID,ki7MID,ki8MID,ki9MID,ki10MID]
+Family=["ue32b11986d8e9e5cf70b642cf7ba88ff",lineMID,ki1MID,ki2MID,ki3MID,ki4MID,ki5MID,ki6MID,ki7MID,ki8MID,ki9MID,ki10MID]
+admin=['ue32b11986d8e9e5cf70b642cf7ba88ff',lineMID]
+RfuFamily = RfuBot + Family
+
+protectname = []
+protecturl = []
+protection = []
+autocancel = {}
+autoinvite = []
+autoleaveroom = []
+targets = []
+#==============================================================================#
+
 print("""
 
 \033["""+str(randint(0,1))+""";"""+str(randint(31,36))+"""mplay free\nby beach noxtian\033[0m
